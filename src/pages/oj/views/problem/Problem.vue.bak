@@ -75,8 +75,11 @@
             <div class="status" v-if="statusVisible">
               <template v-if="!this.contestID || (this.contestID && OIContestRealTimePermission)">
                 <span>{{$t('m.Status')}}</span>
-                <Tag type="dot" :color="submissionStatus.color" title="Click để xem chi tiết" @click.native="handleRoute('/status/'+submissionId+'?problem=' + problem._id + '&contest=' + contestID)">
-                  {{$t('m.' + submissionStatus.text.replace(/ /g, "_"))}}
+                <Tag v-if="this.contestID" type="dot" :color="submissionStatus.color" title="Click để xem chi tiết" @click.native="handleRoute('/status/'+submissionId+'?problem=' + problem._id + '&contest=' + contestID)">
+                  {{$t('m.' + submissionStatus.text.replace(/ /g, "_"))}} ({{this.ACTestCase}}/{{this.totalTestCase}})
+                </Tag>
+                <Tag v-else type="dot" :color="submissionStatus.color" title="Click để xem chi tiết" @click.native="handleRoute('/status/'+submissionId+'?problem=' + problem._id)">
+                  {{$t('m.' + submissionStatus.text.replace(/ /g, "_"))}}  ({{this.ACTestCase}}/{{this.totalTestCase}})
                 </Tag>
               </template>
               <template v-else-if="this.contestID && !OIContestRealTimePermission">
@@ -205,7 +208,7 @@
           <ECharts :options="pie"></ECharts>
         </div>
       </Card>
-      <Card v-if="!this.contestID" style="margin-top: 20px;" :padding="0">
+      <Card style="margin-top: 20px;" :padding="0" v-if="!this.contestID || OIContestRealTimePermission">
         <div slot="title" style="font-size: 16px"><i data-v-20c86fbe="" class="ivu-icon ivu-icon-android-document"></i>
         <span class="card-title">Bài tập mới</span>
         </div>
@@ -284,6 +287,8 @@
           created_by: {
             username: ''
           },
+          totalTestCase: 0,
+          ACTestCase: 0,
           tags: [],
           io_mode: {'io_mode': 'Standard IO'}
         },
@@ -441,6 +446,13 @@
           let id = this.submissionId
           api.getSubmission(id).then(res => {
             this.result = res.data.data
+            this.totalTestCase = res.data.data.info.data.length
+            this.ACTestCase = 0
+            for (let tc of res.data.data.info.data) {
+              if (tc.score > 0) {
+                this.ACTestCase += 1
+              }
+            }
             if (Object.keys(res.data.data.statistic_info).length !== 0) {
               this.submitting = false
               this.submitted = false
@@ -462,6 +474,8 @@
           return
         }
         this.submissionId = ''
+        this.ACTestCase = 0
+        this.totalTestCase = 0
         this.result = {result: 9}
         this.submitting = true
         let data = {
@@ -539,7 +553,7 @@
       submissionStatus () {
         return {
           text: JUDGE_STATUS[this.result.result]['name'],
-          color: JUDGE_STATUS[this.result.result]['color']
+          color: JUDGE_STATUS[this.result.result]['type']
         }
       },
       submissionRoute () {
