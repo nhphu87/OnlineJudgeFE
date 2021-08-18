@@ -14,7 +14,7 @@
 
 ## Get Started
 
-Install Node.JS **v12.16.1** first
+Install Node.JS **v12.22.5** first
 
 ```
 npm install
@@ -24,7 +24,7 @@ NODE_ENV=development npm run build:dll
 # Small language fixed
 cp node_modules/echarts/lib/langEN.js node_modules/echarts/lib/lang.js 
 # the dev-server will set proxy table to your backend
-TARGET=https://luyencode.net npm run dev
+set TARGET=https://YOURURL
 
 # serve with hot reload at localhost:8080
 npm run dev
