@@ -89,7 +89,7 @@
         tagList: [],
         problemTableColumns: [
           {
-            title: 'ID',
+            title: 'Mã nguồn',
             key: '_id',
             width: 120,
             render: (h, params) => {
@@ -136,6 +136,7 @@
           },
           {
             title: this.$i18n.t('m.Level'),
+            width: 100,
             render: (h, params) => {
               let t = params.row.difficulty
               let color = 'primary'
@@ -151,11 +152,13 @@
           {
             sortable: 'custom',
             title: this.$i18n.t('m.Total'),
+            width: 100,
             key: 'submission_number'
           },
           {
             sortable: 'custom',
             title: this.$i18n.t('m.AC_Count'),
+            width: 100,
             key: 'accepted_number',
             render: (h, params) => {
               return h('span', params.row.accepted_number)

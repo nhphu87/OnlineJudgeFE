@@ -1,6 +1,6 @@
 <template>
-  <Row type="flex" :gutter="20">
-    <Col :span="19" id="status">
+  <Row type="flex" justify="space-around">
+    <Col :span="20" id="status">
       <Alert v-if="status.type !== 'primary'" :type="status.type" show-icon>
         <span class="title">{{$t('m.' + status.statusName.replace(/ /g, "_"))}}</span>
         <div slot="desc" class="content">
@@ -43,42 +43,12 @@
         </Button>
       </div>
     </Col>
-    <Col :span="5" :gutter="20">
-      <Panel shadow style="padding-top: 0px;padding-bottom: 10px;min-height: 400px;">
-        <div slot="title" style="margin-left: -10px;margin-bottom: -10px;">{{$t('m.Ranklist_Title')}}</div>
-        <ol style="margin-left: 40px;margin-bottom: 20px;">
-          <li v-for="u in dataRank" :key="u.id">
-            <a :style="'font-weight: 600;color: ' + u.color" :href="'/user-home?username=' + u.user.username"
-               :title=" u.title + ' ' + u.user.username">
-            {{u.user.username}}
-            </a> - {{u.accepted_number}} bài
-          </li>
-        </ol>
-      </Panel>
-      <div class="free-course" style="margin-top: 20px;">
-        <div class="title">Khóa học miễn phí</div>
-          <ul>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/series/cau-truc-du-lieu/" title="Cấu trúc dữ liệu">Cấu trúc dữ liệu</a><img style="width: 20px; height: 20px;" src="https://nguyenvanhieu.vn/wp-content/uploads/2020/07/hot-icon.gif"></li>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/series/hoc-c-khong-kho/" class="series-508" title="Học C Không Khó">Học C Không Khó</a><img style="width: 20px; height: 20px;" src="https://nguyenvanhieu.vn/wp-content/uploads/2020/07/hot-icon.gif"></li>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/go/learn-cpp/">Khóa học lập trình C++</a></li>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/bai-tap-c-co-loi-giai/">Kho bài tập C/C++</a><img style="width: 20px; height: 20px;" src="https://nguyenvanhieu.vn/wp-content/uploads/2020/07/hot-icon.gif"></li>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/series/huong-doi-tuong-cpp/" class="series-510" title="Hướng đối tượng C++">Hướng đối tượng C++</a><img style="width: 20px; height: 20px;" src="https://nguyenvanhieu.vn/wp-content/uploads/2020/07/hot-icon.gif"></li>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/series/python-khong-kho/" class="series-507" title="Python Không Khó">Python Không Khó</a></li>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/hoc-nhanh-python-trong-30-phut/" class="series-132" title="Python Quick Tutorial">Python Quick Tutorial</a><img style="width: 20px; height: 20px;" src="https://nguyenvanhieu.vn/wp-content/uploads/2020/07/hot-icon.gif"></li>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/series/selenium-khong-kho/" class="series-358" title="Selenium không khó">Selenium không khó</a></li><li><a href="https://nguyenvanhieu.vn/series/thu-vien-flask/" class="series-131" title="Thư viện Flask">Thư viện Flask</a></li>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/series/thuc-hanh-sql/" class="series-307" title="Thực hành SQL">Thực hành SQL</a></li>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/hoc-lap-trinh-java/" class="series-126" title="Tự học lập trình Java">Tự học lập trình Java</a><img style="width: 20px; height: 20px;" src="https://nguyenvanhieu.vn/wp-content/uploads/2020/07/hot-icon.gif"></li>
-            <li><a target="_blank" href="https://nguyenvanhieu.vn/series/tu-hoc-lap-trinh-javascript/" class="series-127" title="Tự học lập trình Javascript">Tự học Javascript</a></li>
-            </ul>
-          </div>
-    </Col>
   </Row>
-
 </template>
 
 <script>
   import api from '@oj/api'
-  import {RULE_TYPE, JUDGE_STATUS, USER_GRADE} from '@/utils/constants'
+  import {JUDGE_STATUS} from '@/utils/constants'
   import utils from '@/utils/utils'
   import Highlight from '@/pages/oj/components/Highlight'
 
@@ -89,8 +59,6 @@
     },
     data () {
       return {
-        dataRank: [],
-        rankLimit: 15,
         columns: [
           {
             title: this.$i18n.t('m.ID'),
@@ -140,7 +108,6 @@
     },
     mounted () {
       this.getSubmission()
-      this.getRankData()
     },
     methods: {
       getSubmission () {
@@ -184,16 +151,6 @@
           this.submission['contest'] = this.$route.query.contest
         }, () => {
           this.loading = false
-        })
-      },
-      getRankData () {
-        api.getUserRank(0, this.rankLimit, RULE_TYPE.ACM).then(res => {
-          this.dataRank = res.data.data.results
-          for (let i in this.dataRank) {
-            this.dataRank[i]['color'] = USER_GRADE[this.dataRank[i].grade].color
-            this.dataRank[i]['title'] = USER_GRADE[this.dataRank[i].grade].name
-          }
-        }).catch(() => {
         })
       },
       shareSubmission (shared) {

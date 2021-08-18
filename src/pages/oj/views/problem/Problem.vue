@@ -8,19 +8,18 @@
   <div class="flex-container">
     <div id="problem-main">
       <!--problem main-->
-      <Panel :padding="40" shadow>
-        <div class="report"><a title="Báo lỗi bài tập này" target="_blank" onclick="event.preventDefault();window.open('https://github.com/luyencode/comments/issues/365', '_blank');" rel="noreferrer nofollow noopener"><i class="ivu-icon ivu-icon-md-bug"></i> {{$t('m.Report')}}</a></div>
-        <h2 slot="title" class="problem-title">{{problem._id}} - {{problem.title}}</h2>
+      <Panel :padding="40" shadow>      
+        <div slot="title">{{problem.title}}</div>
         <div id="problem-content" class="markdown-body" v-katex>
-          <h3 class="title">{{$t('m.Description')}}</h3>
+          <p class="title">{{$t('m.Description')}}</p>
           <p class="content" v-html=problem.description></p>
           <!-- {{$t('m.music')}} -->
-          <h3 class="title">{{$t('m.Input')}} <span v-if="problem.io_mode.io_mode=='File IO'">({{$t('m.FromFile')}}: {{ problem.io_mode.input }})</span></h3>
+          <p class="title">{{$t('m.Input')}} <span v-if="problem.io_mode.io_mode=='File IO'">({{$t('m.FromFile')}}: {{ problem.io_mode.input }})</span></p>
           <p class="content" v-html=problem.input_description></p>
 
-          <h3 class="title">{{$t('m.Output')}} <span v-if="problem.io_mode.io_mode=='File IO'">({{$t('m.ToFile')}}: {{ problem.io_mode.output }})</span></h3>
+          <p class="title">{{$t('m.Output')}} <span v-if="problem.io_mode.io_mode=='File IO'">({{$t('m.ToFile')}}: {{ problem.io_mode.output }})</span></p>
           <p class="content" v-html=problem.output_description></p>
-          <h3 class="title">{{$t('m.Sample')}}</h3>
+          <p class="title">{{$t('m.Sample')}}</p>
           <div v-for="(sample, index) of problem.samples" :key="index">
             <div class="flex-container sample">
               <div class="sample-input">
@@ -115,16 +114,6 @@
             </Button>
           </Col>
         </Row>
-      </Card>
-      <Card :padding="20" dis-hover>
-        <h3 style="font-size: 20px;">Bình luận</h3>
-        <ul style="margin-left: 30px;margin-top: 20px;">
-          <li><a rel="nofollow noopener noreferrer" target="_blank" class="animation-text" href="https://gist.github.com/nguyenvanhieuvn/d3e5e20c44ef9d565fa3d7b9ebabfc65">Quy tắc thảo luận &#38; hướng dẫn đăng bình luận ✍️</a></li>
-          <li><span style="font-weight: 600;">NÊN</span> thảo luận giải pháp 😘, <span style="font-weight: 600;">KHÔNG NÊN</span> chia sẻ code 😐</li>
-          <li>Mọi source code đăng mà không được ẩn sẽ bị BOT xóa tự động 😭</li>
-          <li>Tham gia nhóm thảo luận luyện code trên Zalo <a target="_blank" href="https://zalo.me/g/mkfeml532">tại đây</a> 👈</li>
-        </ul>
-        <script type="application/javascript" src="https://utteranc.es/client.js" repo="luyencode/comments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async> </script>
       </Card>
     </div>
     <div id="right-column">
@@ -229,18 +218,6 @@
           </li>
         </ul>
       </Card>
-      <Card style="margin-top: 20px;" :padding="10" v-if="!this.contestID || OIContestRealTimePermission">
-        <div slot="title" style="font-size: 16px;"><i data-v-20c86fbe="" class="ivu-icon ivu-icon-android-favorite" style="color: red; font-size:1.2em;"></i>
-        <span class="card-title">Ủng hộ Luyện Code</span>
-        </div>
-        Ủng hộ 10.000đ giúp chúng tôi phát triển website hơn nữa:
-        <ul style="margin-left: 20px;margin-bottom: 10px;">
-          <li style="padding: 5px 0px;"><span style="color: green;">VPBank</span>: Nguyễn Văn Hiếu, STK: 146301158, chi nhánh Đông Đô</li>
-          <li style="padding: 5px 0px;"><span style="color: green;">MoMo/Zalopay</span>: Nguyễn Văn Hiếu, SĐT: 0349346164</li>
-          <li style="padding: 5px 0px;"><span style="color: green;">Paypal</span>: <a style="color: #495060;" target="_blank" href="https://www.paypal.me/nguyenvanhieuvn">paypal.me/nguyenvanhieuvn</a></li>
-        </ul>
-        Bạn cũng có thể tham gia đội đóng góp bài tập cho Luyện Code, liên hệ <a href="https://fb.com/hieunv.me" target="_blank">admin</a> để được hướng dẫn chi tiết.
-      </Card>
     </div>
   
     <Modal v-model="graphVisible">
@@ -278,7 +255,7 @@
         graphVisible: false,
         submissionExists: false,
         problemList: [],
-        problemLimit: 10,
+        problemLimit: 5,
         query: {
           keyword: '',
           difficulty: '',
@@ -635,11 +612,12 @@
   #problem-content {
     margin-top: -50px;
     word-break: break-word;
+    text-align: justify;
     .title {
       font-size: 20px;
       font-weight: 400;
       margin: 25px 0 8px 0;
-      color: #191a1b;
+      color: #3091f2;
       .copy {
         padding-left: 8px;
       }

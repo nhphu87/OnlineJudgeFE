@@ -1,9 +1,7 @@
 <template>
   <div id="header">
     <Menu theme="light" mode="horizontal" @on-select="handleRoute" :active-name="activeMenu" :class="oj-menu">
-      <!-- <div class="logo"><span>{{website.website_name}}</span></div> -->
-      <!-- <div class="logo" title="Luyện Code Online"><a href="/"><img src="/static/img/logo-ny.png" height="60px" alt="Luyện Code Online - Học lập trình tương tác trực tuyến"></a></div> -->
-      <div class="logo" title="Luyện Code Online"><a href="/"><img src="/static/img/logo.png" height="60px" alt="Luyện Code Online - Học lập trình tương tác trực tuyến"></a></div>
+      <div class="logo" title="NHP online judge"><a href="/"><img src="/static/img/logo.png" height="60px" alt="NHP::OJ"></a></div>
       <Menu-item name="/problem">
         <Icon type="ios-keypad"></Icon>
         {{$t('m.NavProblems')}}
@@ -13,7 +11,7 @@
         {{$t('m.Contests')}}
       </Menu-item>
       <Menu-item name="/status" >
-        <Icon type="md-cloud-upload"></Icon>
+        <Icon type="ios-pulse"></Icon>
         {{$t('m.NavStatus')}}
       </Menu-item>
       <Submenu name="rank">
@@ -29,21 +27,6 @@
         </Menu-item>
         <Menu-item name="/experience-rank">
           {{$t('m.Experience_Rank')}}
-        </Menu-item>
-      </Submenu>
-       <Submenu name="about">
-        <template slot="title">
-          <Icon type="md-information-circle"></Icon>
-          {{$t('m.About')}}
-        </template>
-        <Menu-item name="/about">
-          {{$t('m.AboutUs')}}
-        </Menu-item>
-        <Menu-item name="/judger">
-          {{$t('m.Judger')}}
-        </Menu-item>
-        <Menu-item name="/FAQ">
-          {{$t('m.FAQ')}}
         </Menu-item>
       </Submenu>
       <template v-if="!isAuthenticated">
@@ -104,7 +87,7 @@
       ...mapActions(['getProfile', 'changeModalStatus']),
       handleRoute (route) {
         if (route && route.indexOf('blog') >= 0) {
-          window.open('https://nguyenvanhieu.vn', '_blank')
+          window.open('http://nghoangphu.name.vn', '_blank')
         } else if (route && route.indexOf('admin') < 0) {
           this.$router.push(route)
         } else {

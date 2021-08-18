@@ -42,7 +42,7 @@
     <div v-show="showChart" class="echarts">
       <ECharts :options="options" ref="chart" auto-resize></ECharts>
     </div>
-    <Table ref="tableRank" height="600" :columns="columns" :data="dataRank" disabled-hover></Table>
+    <Table ref="tableRank"  :columns="columns" :data="dataRank" disabled-hover></Table>
     <Pagination :total="total"
                 :page-size.sync="limit"
                 :current.sync="page"
@@ -75,7 +75,7 @@
         columns: [
           {
             align: 'center',
-            width: 50,
+            width: 80,
             fixed: 'left',
             render: (h, params) => {
               return h('span', {}, params.index + (this.page - 1) * this.limit + 1)
@@ -84,7 +84,7 @@
           {
             title: this.$i18n.t('m.User_User'),
             align: 'center',
-            minWidth: 100,
+            minWidth: 150,
             fixed: 'left',
             render: (h, params) => {
               if (params.row.title) {
@@ -133,14 +133,14 @@
             }
           },
           {
-            title: 'AC / ' + this.$i18n.t('m.Total'),
+            title: 'AC/Total',
             align: 'center',
             width: 100,
             render: (h, params) => {
               return h('span', {}, [
                 h('span', {}, params.row.accepted_number + ' / '),
                 h('a', {
-                  on: {
+                  o: {
                     click: () => {
                       this.$router.push({
                         name: 'contest-submission-list',

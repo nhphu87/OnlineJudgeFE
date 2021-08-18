@@ -37,26 +37,13 @@
         <Pagination :total="total" :page-size="limit" @on-change="changeRoute" :current.sync="page"></Pagination>
       </Panel>
     </div>
-    <div v-if="!contestID" id="right-column">
-      <Panel shadow style="padding-top: 0px;padding-bottom: 10px;min-height: 400px;">
-        <div slot="title" style="margin-left: -10px;margin-bottom: -10px;">{{$t('m.Ranklist_Title')}}</div>
-        <ol style="margin-left: 40px;margin-bottom: 20px;">
-          <li v-for="u in dataRank" :key="u.id" style="margin-top:4px;">
-            <a :style="'font-weight: 600;color: ' + u.color" :href="'/user-home?username=' + u.user.username"
-               :title=" u.title + ' ' + u.user.username">
-            {{u.user.username}}
-            </a> - {{u.accepted_number}} bài
-          </li>
-        </ol>
-      </Panel>
-    </div>
   </div>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
   import api from '@oj/api'
-  import { RULE_TYPE, JUDGE_STATUS, USER_TYPE, USER_GRADE } from '@/utils/constants'
+  import { JUDGE_STATUS, USER_TYPE, USER_GRADE } from '@/utils/constants'
   import utils from '@/utils/utils'
   import time from '@/utils/time'
   import Pagination from '@/pages/oj/components/Pagination'
@@ -68,8 +55,6 @@
     },
     data () {
       return {
-        dataRank: [],
-        rankLimit: 30,
         formFilter: {
           myself: false,
           result: '',
@@ -186,8 +171,8 @@
         ],
         loadingTable: false,
         submissions: [],
-        total: 30,
-        limit: 15,
+        total: 40,
+        limit: 20,
         page: 1,
         contestID: '',
         problemID: '',
@@ -198,7 +183,6 @@
     },
     mounted () {
       this.init()
-      this.getRankData()
       this.JUDGE_STATUS = Object.assign({}, JUDGE_STATUS)
       // 去除submitting的状态 和 两个
       delete this.JUDGE_STATUS['9']
@@ -218,16 +202,6 @@
         }
         this.routeName = this.$route.name
         this.getSubmissions()
-      },
-      getRankData () {
-        api.getUserRank(0, this.rankLimit, RULE_TYPE.ACM).then(res => {
-          this.dataRank = res.data.data.results
-          for (let i in this.dataRank) {
-            this.dataRank[i]['color'] = USER_GRADE[this.dataRank[i].grade].color
-            this.dataRank[i]['title'] = USER_GRADE[this.dataRank[i].grade].name
-          }
-        }).catch(() => {
-        })
       },
       buildQuery () {
         return {

@@ -30,7 +30,7 @@ export default [
   {
     name: 'home',
     path: '/',
-    meta: {title: 'Học lập trình tương tác trực tuyến'},
+    meta: {title: 'NHP Online Judge'},
     component: Home
   },
   {

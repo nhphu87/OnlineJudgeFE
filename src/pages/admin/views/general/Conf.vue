@@ -141,7 +141,7 @@
       <save @click.native="saveWebsiteConfig" style="margin-top: 20px;"></save>
     </Panel>
 
-    <Panel :title="'About Us Config'">
+    <Panel :title="$t('About Us Config')">
       <div>
         <el-form label-position="top">
           <el-form-item>

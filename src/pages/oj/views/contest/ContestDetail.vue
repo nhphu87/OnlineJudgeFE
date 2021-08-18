@@ -42,7 +42,7 @@
 
         <VerticalMenu-item :disabled="contestMenuDisabled"
                            :route="{name: 'contest-announcement-list', params: {contestID: contestID}}">
-          <Icon type="md-chatbubble-working"></Icon>
+          <Icon type="md-chatbubbles"></Icon>
           {{$t('m.Announcements')}}
         </VerticalMenu-item>
 

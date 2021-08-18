@@ -78,9 +78,9 @@ export default {
         this.$store.commit(types.CHANGE_CONTEST_ITEM_VISIBLE, {realName: value})
         if (value) {
           this.columns.splice(2, 0, {
-            title: 'Tên thật',
+            title: 'Họ tên',
             align: 'center',
-            width: 150,
+            width: 200,
             render: (h, {row}) => {
               return h('span', row.user.real_name)
             }
