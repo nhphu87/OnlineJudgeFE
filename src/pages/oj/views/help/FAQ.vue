@@ -16,13 +16,13 @@
           <p>Chức năng này đánh giá thứ hạng của bạn trên hệ thống. Bạn có thể Điểm danh hàng ngày và làm các bài tập để tăng điểm chuyên cần của mình. Khi điểm đạt đến một mức độ, bạn sẽ nhận được danh hiệu tương ứng.
           </p>
           <div>Cách tính điểm chuyên cần:
-            <p>1. Nhận <code>1</code> cho mỗi lần điểm danh, vào các ngày thứ <code>3, 7, 15, 30, 60, 90, 120, 240, 365</code> của chuỗi, bạn sẽ nhận được <code>1, 2, 4, 7, 12, 0, 33, 54, 88</code> điểm chuyên cần</p>
+            <p>1. Nhận <code>1</code> cho mỗi lần điểm danh, vào các ngày thứ <code>3, 7, 15, 30, 60, 90, 120, 240, 365</code> của chuỗi, bạn sẽ nhận được <code>1, 2, 4, 7, 12, 20, 33, 54, 88</code> điểm chuyên cần</p>
             <p>2. Đối với mỗi bài tập bạn vượt qua ở lần đầu tiên, bạn sẽ nhận được <code>3, 8, 15</code> điểm tương ứng với độ khó của bài tập đó (Dễ, Trung bình, Khó)</p>
           </div>
           <div>
             Quy đổi danh hiệu:
             <p>&nbsp; &nbsp; 0 - 99 điểm: <Tag color="gray" style="margin-right:-15px;">Newbie</Tag></p>
-            <p>&nbsp; &nbsp; 100 - 199 điểm: <Tag color="green" style="margin-right:-15px;">Pupil</Tag></p>
+            <p>&nbsp; &nbsp; 100 - 199 điểm: <Tag color="#008800" style="margin-right:-15px;">Pupil</Tag></p>
             <p>&nbsp; &nbsp; 200 - 499 điểm: <Tag color="green" style="margin-right:-15px;">Specialist</Tag></p>
             <p>&nbsp; &nbsp; 500 - 999 điểm: <Tag color="blue" style="margin-right:-15px;">Expert</Tag></p>
             <p>&nbsp; &nbsp; 1000 - 4999 điểm: <Tag color="#a0a" style="margin-right:-15px;">Candidate master</Tag></p>

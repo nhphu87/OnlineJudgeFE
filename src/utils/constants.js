@@ -138,7 +138,7 @@ export const USER_GRADE = {
   '1': {
     name: 'Pupil',
     short: '1',
-    color: 'green'
+    color: '#008800'
   },
   '2': {
     name: 'Specialist',
