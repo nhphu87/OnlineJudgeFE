@@ -54,10 +54,10 @@
             </Card>
           </div>
 
-          <div v-if="problem.source">
+          <!--<div v-if="problem.source">
             <h3 class="title">{{$t('m.Source')}}</h3>
             <p class="content" v-html="problem.source"></p>
-          </div>
+          </div>-->
 
         </div>
       </Panel>

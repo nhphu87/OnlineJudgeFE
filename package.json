@@ -33,7 +33,7 @@
     "screenfull": "^3.3.2",
     "serialize-javascript": ">=3.1.0",
     "set-value": ">=2.0.1",
-    "tar-simditor": "^3.0.5",
+    "my-tar-simditor": "^2.4.6",
     "tar-simditor-markdown": "^1.2.3",
     "vue": "^2.6.10",
     "vue-analytics": "^5.10.4",
