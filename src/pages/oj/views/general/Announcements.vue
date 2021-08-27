@@ -195,10 +195,72 @@
         this.announcement = ''
       },
       getWord () {
-        // axios.get('http://nghoangphu.name.vn/danhngon').then(response => {
-        //   this.word = response.data.hitokoto
-        // })
-        this.word = '- Học tập là gian khổ, muốn không khổ thì đừng gian  -'
+        // axios.get('http://nghoangphu.name.vn/danhngon/').then(response => {
+        //   this.word = response.data.data
+        // }
+        let today = new Date()
+        let r = today.getMinutes() % 30
+        if (r % 30 === 1) {
+          this.word = 'Người thầy là người rút ra nhiều nhất từ bài giảng, và người thầy thực sự cũng là một người trò. - Elbert Hubbard'
+        } else if (r === 0) {
+          this.word = 'Học tập là gian khổ, muốn đừng khổ thì đừng gian.'
+        } else if (r === 2) {
+          this.word = 'Cần phải lựa chọn một cách nghiêm ngặt xem nên học gì và không nên học gì. - Lev. Tolstoy'
+        } else if (r === 3) {
+          this.word = 'Học không biết chán, dạy người không biết mỏi. - Khổng Tử'
+        } else if (r === 4) {
+          this.word = 'Ngủ dậy muộn thì phí mất cả ngày, ở tuổi thanh niên mà không học tập thì phí mất cả cuộc đời.'
+        } else if (r === 5) {
+          this.word = 'Giáo dục là một điều đáng kính trọng nhưng nên nhớ rằng đôi khi những điều được dạy là những cái không đáng biết. - Oscar Wilde'
+        } else if (r === 6) {
+          this.word = 'Nhà trường chỉ cho chúng ta chiếc chìa khóa tri thức, học trong cuộc sống là công việc cả đời. – Bill Gates'
+        } else if (r === 7) {
+          this.word = 'Hãy học từ sai lầm của người khác. Bạn sẽ không bao giờ sống đủ lâu để phạm phải tất cả sai lầm. - Groucho Marx'
+        } else if (r === 8) {
+          this.word = 'Phải luôn học tập chừng nào còn một điều chưa biết. - Lxeneska'
+        } else if (r === 9) {
+          this.word = 'Đừng xấu hổ khi không biết, chỉ xấu hổ khi không học.'
+        } else if (r === 10) {
+          this.word = 'Hỏi một câu chỉ dốt chốt lát. Nhưng không hỏi sẽ dốt nát cả đời.'
+        } else if (r === 11) {
+          this.word = 'Học từ ngày hôm qua, sống cho ngày hôm nay và hy vọng vào ngày mai. Điều quan trọng là không dừng đặt câu hỏi. - Albert Einstein'
+        } else if (r === 12) {
+          this.word = 'Học khi người khác ngủ, làm khi người khác lười, chuẩn bị khi người khác chơi và có giấc mơ khi người khác ao ước. - William Arthur Ward'
+        } else if (r === 13) {
+          this.word = 'Để hiểu được sắc đẹp của một bông tuyết, cần phải đứng ra giữa trời lạnh.'
+        } else if (r === 14) {
+          this.word = 'Hãy sống như ngày mai sẽ chết và hãy học như ta sẽ sống mãi mãi. - Mahatma Gandhi'
+        } else if (r === 15) {
+          this.word = 'Dốt đến đâu, học lâu cũng biết'
+        } else if (r === 16) {
+          this.word = 'Đừng bao giờ để cho sự kiên nhẫn và đam mê của bạn biến thành sự ngoan cố và ngu dốt. - Anthony J. D’Angelo'
+        } else if (r === 17) {
+          this.word = 'Thành công là gặp phải thất bại này đến thất bại khác mà không đánh mất đi lòng nhiệt huyết. - Winston Churchill'
+        } else if (r === 18) {
+          this.word = 'Cách tốt nhất để thoát khỏi khó khăn là vượt qua nó. – Robert Frost'
+        } else if (r === 19) {
+          this.word = 'Nếu muốn dẫn đầu, thì hãy hành động như thể bạn đang bị bỏ lại phía sau. -  Lão Tử'
+        } else if (r === 20) {
+          this.word = 'Nếu đam mê là con đường dẫn đến thành công, thì sự kiên trì chính là chiếc xe đưa bạn đến đó.”- Bill Bradley'
+        } else if (r === 21) {
+          this.word = 'Không phải vì tôi thông minh, mà vì tôi dành thời gian cho các rắc rối nhiều hơn. - Albert Einstein'
+        } else if (r === 22) {
+          this.word = 'Không biết đã bao nhiêu lần con người buông tay từ bỏ khi mà chỉ một chút nỗ lực, một chút kiên trì nữa thôi là anh ta sẽ đạt được thành công. - Elbert Hubbard'
+        } else if (r === 23) {
+          this.word = 'Hãy để những giọt mồ hôi rơi trên trang sách, đừng để những giọt nước mắt rơi trên bài thi'
+        } else if (r === 24) {
+          this.word = 'Chính anh em là muối cho đời. Nhưng muối mà nhạt đi, thì lấy gì muối nó cho mặn lại? Nó đã thành vô dụng, thì chỉ còn việc quăng ra nguoafi cho người ta chà đạp thôi. - Mt5,13'
+        } else if (r === 25) {
+          this.word = 'Sao anh thấy cái rác trong con mắt của người anh em, mà cái xà trong con mắt của mình thì lại không để ý tới? - Mt7,13'
+        } else if (r === 26) {
+          this.word = 'Không phải cái vào miệng làm cho con người ra ô uế, nhưng cái từ miệng xuất ra, cái đó mới làm cho con người ra ô uế. - Mt15,11'
+        } else if (r === 27) {
+          this.word = 'Nhiều kẻ đứng đầu sẽ phải xuống hàng chót, và nhiều kẻ đứng chót sẽ được lên hàng đầu. - Mt19,30'
+        } else if (r === 28) {
+          this.word = 'Ai muốn làm lớn giữa anh em, thì phải làm người phục vụ anh em. Và ai muốn làm đầu anh em thì phải làm đầy tớ anh em. - Mt20,26-27'
+        } else {
+          this.word = 'Tôi không thất bại, chẳng qua là tôi đã tìm ra 10000 cách mà nó không hoạt động. - Thomas Edison'
+        }
       },
       setNowTimes () {
         let myDate = new Date()
