@@ -143,7 +143,7 @@ export const USER_GRADE = {
   '2': {
     name: 'Specialist',
     short: '2',
-    color: 'green'
+    color: 'cyan'
   },
   '3': {
     name: 'Expert',

@@ -23,7 +23,7 @@
             Quy đổi danh hiệu:
             <p>&nbsp; &nbsp; 0 - 99 điểm: <Tag color="gray" style="margin-right:-15px;">Newbie</Tag></p>
             <p>&nbsp; &nbsp; 100 - 199 điểm: <Tag color="#008800" style="margin-right:-15px;">Pupil</Tag></p>
-            <p>&nbsp; &nbsp; 200 - 499 điểm: <Tag color="green" style="margin-right:-15px;">Specialist</Tag></p>
+            <p>&nbsp; &nbsp; 200 - 499 điểm: <Tag color="cyan" style="margin-right:-15px;">Specialist</Tag></p>
             <p>&nbsp; &nbsp; 500 - 999 điểm: <Tag color="blue" style="margin-right:-15px;">Expert</Tag></p>
             <p>&nbsp; &nbsp; 1000 - 4999 điểm: <Tag color="#a0a" style="margin-right:-15px;">Candidate master</Tag></p>
             <p>&nbsp; &nbsp; 5000 - 9999 điểm: <Tag color="#FF8C00" style="margin-right:-15px;">Master</Tag></p>
